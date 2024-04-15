@@ -1,0 +1,152 @@
+{
+	"properties": [
+		{
+			"id": "001",
+			"segment_name": "Single-family homes",
+			"estate_title": "Charming Bungalow",
+			"description": "A beautiful and spacious 3-bedroom bungalow in a serene neighborhood, perfect for families.",
+			"price": 350000,
+			"status": "sale",
+			"area_sq_ft": 2500,
+			"location": "Beverly Hills, CA",
+			"facilities": [
+				"living room",
+				"kitchen",
+				"backyard garden",
+				"garage"
+			],
+			"image": "https://i.ibb.co/WWx7Q1R/001.jpg"
+		},
+		{
+			"id": "002",
+			"segment_name": "Townhouses",
+			"estate_title": "Modern Townhouse",
+			"description": "Stylish townhouse with all modern amenities, close to downtown and shopping centers.",
+			"price": 450000,
+			"status": "sale",
+			"area_sq_ft": 2000,
+			"location": "Austin, TX",
+			"facilities": [
+				"living room",
+				"swimming pool",
+				"kitchen",
+				"2-car garage"
+			],
+			"image": "https://i.ibb.co/kKbvb2Z/002.jpg"
+		},
+		{
+			"id": "003",
+			"segment_name": "Apartments",
+			"estate_title": "Downtown Highrise",
+			"description": "Luxury apartment with stunning city views and top-of-the-line fixtures and finishes.",
+			"price": 2200,
+			"status": "rent",
+			"area_sq_ft": 1200,
+			"location": "Manhattan, NY",
+			"facilities": ["living room", "gym", "rooftop deck", "concierge"],
+			"image": "https://i.ibb.co/BNMxBtK/003.jpg"
+		},
+		{
+			"id": "004",
+			"segment_name": "Student housing",
+			"estate_title": "Campus Corner Apartments",
+			"description": "Affordable and convenient student housing, just steps from the university and public transit.",
+			"price": 800,
+			"status": "rent",
+			"area_sq_ft": 800,
+			"location": "Cambridge, MA",
+			"facilities": [
+				"living room",
+				"bike storage",
+				"laundry room",
+				"WiFi"
+			],
+			"image": "https://i.ibb.co/y0RQSK6/004.jpg"
+		},
+		{
+			"id": "005",
+			"segment_name": "Senior living communities",
+			"estate_title": "Tranquil Retirement Home",
+			"description": "A peaceful and secure community for seniors, offering full medical facilities and recreational activities.",
+			"price": 3000,
+			"status": "rent",
+			"area_sq_ft": 1500,
+			"location": "Naples, FL",
+			"facilities": [
+				"living room",
+				"community hall",
+				"health center",
+				"weekly activities"
+			],
+			"image": "https://i.ibb.co/pxSwkjs/005.jpg"
+		},
+		{
+			"id": "006",
+			"segment_name": "Vacation rentals",
+			"estate_title": "Beachfront Villa",
+			"description": "Stunning villa right on the beach, perfect for a luxurious getaway with breathtaking ocean views.",
+			"price": 4500,
+			"status": "rent",
+			"area_sq_ft": 3000,
+			"location": "Malibu, CA",
+			"facilities": [
+				"living room",
+				"private beach",
+				"hot tub",
+				"outdoor kitchen"
+			],
+			"image": "https://i.ibb.co/j557wXb/006.jpg"
+		},
+		{
+			"id": "007",
+			"segment_name": "Single-family homes",
+			"estate_title": "Suburban Family Home",
+			"description": "Ideal family home in a friendly suburb, with a large yard and close to good schools.",
+			"price": 270000,
+			"status": "sale",
+			"area_sq_ft": 1800,
+			"location": "Charlotte, NC",
+			"facilities": [
+				"living room",
+				"playground",
+				"kitchen",
+				"2-car garage"
+			],
+			"image": "https://i.ibb.co/GHrTL88/007.jpg"
+		},
+		{
+			"id": "008",
+			"segment_name": "Apartments",
+			"estate_title": "Urban Studio",
+			"description": "Compact and affordable studio apartment in the heart of the city, perfect for singles or couples.",
+			"price": 1500,
+			"status": "rent",
+			"area_sq_ft": 500,
+			"location": "San Francisco, CA",
+			"facilities": [
+				"living room",
+				"kitchenette",
+				"fitness center",
+				"rooftop access"
+			],
+			"image": "https://i.ibb.co/yRKx6xb/008.jpg"
+		},
+		{
+			"id": "009",
+			"segment_name": "Townhouses",
+			"estate_title": "Heritage Townhouse",
+			"description": "Beautifully restored townhouse with historical charm, modern comforts, and a prime location.",
+			"price": 550000,
+			"status": "sale",
+			"area_sq_ft": 2300,
+			"location": "Charleston, SC",
+			"facilities": [
+				"living room",
+				"garden courtyard",
+				"gourmet kitchen",
+				"private parking"
+			],
+			"image": "https://i.ibb.co/55Z8RvF/009.jpg"
+		}
+	]
+}
