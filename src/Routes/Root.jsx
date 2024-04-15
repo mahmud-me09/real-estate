@@ -2,6 +2,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../Components/NavBar";
 import Footer from "../Components/Footer";
 import { HelmetProvider } from "react-helmet-async";
+import { ToastContainer } from "react-toastify";
 
 const Root = () => {
 	return (
@@ -10,6 +11,7 @@ const Root = () => {
 				<NavBar></NavBar>
 				<Outlet></Outlet>
 				<Footer></Footer>
+				<ToastContainer />
 			</div>
 		</HelmetProvider>
 	);
