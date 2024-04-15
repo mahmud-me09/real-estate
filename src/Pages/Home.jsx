@@ -1,14 +1,14 @@
 import React from 'react';
-import NavBar from '../Components/NavBar';
+import "animate.css";
 import Slider from '../Components/Slider';
 import Cards from '../Components/Cards';
-import Footer from '../Components/Footer';
+
 
 const Home = () => {
     return (
 		<div>
 			<Slider></Slider>
-			<div className="my-10 text-center">
+			<div className="my-10 text-center animate__animated animate__zoomIn">
 				<h1 className=" font-bold my-4 text-3xl animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
 					----: Estates :----
 				</h1>
@@ -22,7 +22,7 @@ const Home = () => {
 				</p>
 			</div>
 			<Cards></Cards>
-
+			
 		</div>
 	);
 };

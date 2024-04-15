@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Card';
+import { lazy } from "react";
 
 const Cards = () => {
     const [estates, setEstates] = useState([])
