@@ -1,12 +1,30 @@
 import React from 'react';
 import NavBar from '../Components/NavBar';
+import Slider from '../Components/Slider';
+import Cards from '../Components/Cards';
+import Footer from '../Components/Footer';
 
 const Home = () => {
     return (
-        <div>
-            <NavBar></NavBar>
-        </div>
-    );
+		<div>
+			<Slider></Slider>
+			<div className="my-10 text-center">
+				<h1 className=" font-bold my-4 text-3xl animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+					----: Estates :----
+				</h1>
+				<p className="w-3/4 mx-auto">
+					At our real estate company, we offer a diverse range of
+					residential properties, from cozy apartments and luxury
+					townhouses to family-friendly homes and specialized senior
+					living. Each property is selected with care to ensure
+					quality and comfort, tailored to meet all your housing
+					needs.
+				</p>
+			</div>
+			<Cards></Cards>
+
+		</div>
+	);
 };
 
 export default Home;

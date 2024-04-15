@@ -6,6 +6,8 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import DetailPage from "../Pages/DetailPage";
 import CartPage from "../Pages/CartPage";
+import UpdatePage from "../Pages/UpdatePage";
+import ProfilePage from "../Pages/ProfilePage";
 
 const Routes = () => {
     const router = createBrowserRouter([
@@ -33,6 +35,14 @@ const Routes = () => {
 				{
 					path: "/cart",
 					element: <CartPage></CartPage>,
+				},
+				{
+					path: "/profile",
+					element: <ProfilePage></ProfilePage>,
+				},
+				{
+					path: "/update",
+					element: <UpdatePage></UpdatePage>,
 				},
 			],
 		},
