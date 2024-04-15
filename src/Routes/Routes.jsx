@@ -29,7 +29,8 @@ const Routes = () => {
 					element: <Register></Register>,
 				},
 				{
-					path: "/detail/:id",
+					path: ":id",
+					loader:()=>fetch('./data.json'),
 					element: <DetailPage></DetailPage>,
 				},
 				{

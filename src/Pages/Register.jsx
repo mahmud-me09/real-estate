@@ -1,5 +1,6 @@
 import { useForm } from 'react-hook-form';
 import NavBar from '../Components/NavBar';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -8,7 +9,7 @@ const Register = () => {
   
   return (
 		<>
-
+			<Helmet><title>Luxury Living | Register</title></Helmet>
 			<form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
 				<input
 					type="text"
