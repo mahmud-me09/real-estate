@@ -5,9 +5,9 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import DetailPage from "../Pages/DetailPage";
-import CartPage from "../Pages/CartPage";
 import UpdatePage from "../Pages/UpdatePage";
 import ProfilePage from "../Pages/ProfilePage";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Routes = () => {
     const router = createBrowserRouter([
@@ -30,16 +30,21 @@ const Routes = () => {
 				},
 				{
 					path: ":id",
-					loader:()=>fetch('./data.json'),
-					element: <DetailPage></DetailPage>,
+					loader: () => fetch("./data.json"),
+					element: (
+						<PrivateRoutes>
+							<DetailPage></DetailPage>
+						</PrivateRoutes>
+					),
 				},
-				{
-					path: "/cart",
-					element: <CartPage></CartPage>,
-				},
+
 				{
 					path: "/profile",
-					element: <ProfilePage></ProfilePage>,
+					element: (
+						<PrivateRoutes>
+							<ProfilePage></ProfilePage>
+						</PrivateRoutes>
+					),
 				},
 				{
 					path: "/update",

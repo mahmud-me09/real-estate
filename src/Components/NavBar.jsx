@@ -28,7 +28,7 @@ const NavBar = () => {
 					Update Profile
 				</NavLink>
 			</li>
-			<li className="font-bold">
+			{user && <li className="font-bold">
 				<NavLink
 					to="/profile"
 					className={({ isActive }) =>
@@ -37,7 +37,7 @@ const NavBar = () => {
 				>
 					User Profile
 				</NavLink>
-			</li>
+			</li>}
 		</>
 	);
 	return (

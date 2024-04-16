@@ -1,12 +1,9 @@
 import { useForm } from "react-hook-form";
-
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext, useEffect, useState } from "react";
-import auth from "../Utils/firebase.config";
-import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
-import NavBar from "../Components/NavBar";
+import { useContext, useState } from "react";
+import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 
