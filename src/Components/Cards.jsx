@@ -13,7 +13,7 @@ const Cards = () => {
     return (
 		<div className="grid grid-cols-1 lg:grid-cols-3 place-items-center gap-6">
 			{estates.map((estate) => (
-				<Card key={estate.id}>{estate}</Card>
+				<Card key={estate.id} estate={estate}></Card>
 			))}
 		</div>
 	);

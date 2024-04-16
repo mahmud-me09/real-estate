@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
-const Card = ({children}) => {
+const Card = ({estate}) => {
+	const navigate = useNavigate()
     return (
 		<div>
 			<div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
 				<div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
 					<img
 						className="w-full h-[255px]"
-						src={children.image}
+						src={estate.image}
 						alt="ui/ux review check"
 					/>
 					<div className="absolute inset-0 w-full h-full to-bg-black-10 bg-gradient-to-tr from-transparent via-transparent to-black/60"></div>
@@ -18,7 +19,7 @@ const Card = ({children}) => {
 						type="button"
 					>
 						<span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
-							{children.status}
+							{estate.status}
 						</span>
 					</button>
 					<button
@@ -26,7 +27,7 @@ const Card = ({children}) => {
 						type="button"
 					>
 						<span className="absolute transform -translate-x-1/2 -translate-y-1/2 ">
-							{children.location}
+							{estate.location}
 						</span>
 					</button>
 					<button
@@ -34,37 +35,37 @@ const Card = ({children}) => {
 						type="button"
 					>
 						<span className="absolute transform -translate-x-1/2 -translate-y-1/2 ">
-							{children.area_sq_ft} sqft
+							{estate.area_sq_ft} sqft
 						</span>
 					</button>
 				</div>
 				<small className="text-xs px-6 text-center">
 					{" "}
-					(Id: {children.id})
+					(Id: {estate.id})
 				</small>
 				<div className="p-6">
 					<div className="flex items-center justify-between mb-3">
 						<h5 className="block font-sans text-xl antialiased font-medium leading-snug tracking-normal text-blue-gray-900">
-							{children.estate_title}
+							{estate.estate_title}
 						</h5>
 
 						<p className="flex items-center gap-1.5 font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased">
-							<strong>Price: ${children.price}</strong>
+							<strong>Price: ${estate.price}</strong>
 						</p>
 					</div>
 					<p className="block font-sans text-base antialiased font-light leading-relaxed text-gray-700">
-						{children.description}
+						{estate.description}
 					</p>
 				</div>
 
 				<p className="px-6">
 					<strong>Segment Name: </strong>
-					{children.segment_name}
+					{estate.segment_name}
 				</p>
 				<div className="px-6">
 					<strong>Facilities:</strong>
 					<ul className="px-8" style={{ listStyle: "circle" }}>
-						{children.facilities.map((facility, idx) => (
+						{estate.facilities.map((facility, idx) => (
 							<li key={idx}>{facility}</li>
 						))}
 					</ul>
@@ -72,11 +73,11 @@ const Card = ({children}) => {
 
 				<div className="p-6 pt-3">
 					<button
+						onClick={()=>navigate(`/${estate.id}`)}
 						className="block w-full select-none rounded-lg bg-gray-900 py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 						type="button"
-					> <Link to = {`${children.id}`}>
+					> 
 						View Property
-                        </Link>
 					</button>
 				</div>
 			</div>
