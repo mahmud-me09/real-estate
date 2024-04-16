@@ -16,6 +16,7 @@ const DetailPage = () => {
 			<Helmet>
 				<title>Luxury Living | Detail</title>
 			</Helmet>
+	
 			<div className="relative mx-auto flex w-full max-w-[26rem] flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-lg">
 				<div className="relative mx-4 mt-4 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
 					<img

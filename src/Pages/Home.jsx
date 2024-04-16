@@ -3,6 +3,7 @@ import "animate.css";
 import Slider from '../Components/Slider';
 import Cards from '../Components/Cards';
 import { Helmet } from 'react-helmet-async';
+import NavBar from '../Components/NavBar';
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
 			<Helmet>
 				<title>Luxury Living | Home</title>
 			</Helmet>
+	
 			<Slider></Slider>
 			<div className="my-10 text-center animate__animated animate__zoomIn">
 				<h1 className=" font-bold my-4 text-3xl animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">

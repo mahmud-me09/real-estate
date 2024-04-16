@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import NavBar from '../Components/NavBar';
 
 const CartPage = () => {
     return (

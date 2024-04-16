@@ -6,6 +6,7 @@ const ProfilePage = () => {
     return (
 		<div>
 			<Helmet><title>Luxury Living | Profile</title></Helmet>
+
 			Showing Profile
 		</div>
 	);

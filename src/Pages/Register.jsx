@@ -3,12 +3,19 @@ import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import auth from "../Utils/firebase.config";
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from "firebase/auth";
+import NavBar from "../Components/NavBar";
+import { AuthContext } from "../Providers/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
+	const navigate = useNavigate();
 	const [user, setUser] = useState([]);
+	
+	const {createUser} = useContext(AuthContext)
+
 	const {
 		register,
 		handleSubmit,
@@ -16,7 +23,7 @@ const Register = () => {
 		reset,
 	} = useForm();
 	const onSubmit = (data) => {
-		createUserWithEmailAndPassword(auth, data.email, data.password)
+		createUser(data.email, data.password)
 			.then((userCredential) => {
 				// Signed in
 				const newUser = userCredential.user;
@@ -30,6 +37,7 @@ const Register = () => {
 			})
 			.then(() => {
 				toast.success("Profile Updated Successfully");
+				setTimeout(()=>navigate("/"),2000) ;
 				reset()
 			})
 			.catch((error) => {
@@ -156,6 +164,7 @@ const Register = () => {
 					</div>
 					<input className="btn my-4" type="submit" />
 				</form>
+				<p className="text-center">Already have an account Please <Link className="underline text-blue-600" to ="/login">Sign in</Link></p>
 			</div>
 		</>
 	);
