@@ -1,16 +1,47 @@
 import { useForm } from "react-hook-form";
-import NavBar from "../Components/NavBar";
+
 import { Helmet } from "react-helmet-async";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+import auth from "../Utils/firebase.config";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 const Register = () => {
+	const [user, setUser] = useState([]);
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
+		reset,
 	} = useForm();
-	const onSubmit = (data) => console.log(data);
-	console.log(errors.message);
+	const onSubmit = (data) => {
+		createUserWithEmailAndPassword(auth, data.email, data.password)
+			.then((userCredential) => {
+				// Signed in
+				const newUser = userCredential.user;
+				setUser(newUser); // Set user state
+				toast.success("User Created Successfully");
+
+				return updateProfile(newUser, {
+					displayName: data.Name,
+					photoURL: data.photoURL,
+				});
+			})
+			.then(() => {
+				toast.success("Profile Updated Successfully");
+				reset()
+			})
+			.catch((error) => {
+				toast.error(`User creation failed: ${error.message}`);
+				console.error(
+					"Error during user creation or profile update:",
+					error
+				);
+			});
+	};
+
+	console.log(user);
 
 	return (
 		<>
@@ -30,60 +61,85 @@ const Register = () => {
 				>
 					<div className="space-y-4">
 						<div className="space-y-2">
-							<label htmlFor="email" className="block text-sm">
-								Name
+							<label htmlFor="name" className="block text-sm">
+								Name<span className="text-red-500">*</span>
 							</label>
 							<input
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
 								type="text"
 								placeholder="Name"
 								{...register("Name", { required: true })}
+								aria-invalid={errors.Name ? "true" : "false"}
 							/>
+							{errors.Name?.type === "required" && (
+								<p role="alert" className="text-red-600">
+									Name is required
+								</p>
+							)}
 						</div>
 						<div className="space-y-2">
 							<label
 								htmlFor="Photo Url"
 								className="block text-sm"
 							>
-								Photo URL
+								Photo URL<span className="text-red-500">*</span>
 							</label>
 							<input
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
 								type="url"
 								placeholder="Photo URL"
-								{...register("Photo URL", { required: true })}
+								{...register("photoURL", {
+									required: "Photo URL is required",
+								})}
+								aria-invalid={
+									errors.photoURL ? "true" : "false"
+								}
 							/>
+							{errors.photoURL?.type === "required" && (
+								<p className="text-red-600" role="alert">
+									PhotoURL is required !!!
+								</p>
+							)}
 						</div>
 						<div className="space-y-2">
 							<label htmlFor="email" className="block text-sm">
 								Email address
+								<span className="text-red-500">*</span>
 							</label>
 							<input
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
 								type="text"
 								placeholder="Email"
-								{...register("Email", {
-									required: true,
-									pattern:{
-										value: /^\S+@\S+$/i,
-										message:
-											()=>toast.warn("not valid email"),
-									}, 
-									
+								{...register("email", {
+									required: "Email Address is required",
+									pattern: {
+										value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+										message: "Not a valid email",
+									},
 								})}
+								aria-invalid={errors.email ? "true" : "false"}
 							/>
+							{errors.email && (
+								<p className="text-red-500" role="alert">
+									{errors.email.message}
+								</p>
+							)}
 						</div>
 						<div className="space-y-2">
 							<label htmlFor="password" className="text-sm">
-								Password
+								Password<span className="text-red-500">*</span>
 							</label>
 							<input
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
 								type="password"
 								placeholder="Password"
-								{...register("Password", {
+								{...register("password", {
 									required: true,
-									min: 6,
+									min: {
+										value: 6,
+										message:
+											"Password must be at least 6 characters long",
+									},
 									pattern: {
 										value: /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/,
 										message:
@@ -91,6 +147,11 @@ const Register = () => {
 									},
 								})}
 							/>
+							{errors.password && (
+								<p role="alert" className="text-red-600">
+									{errors.password.message}
+								</p>
+							)}
 						</div>
 					</div>
 					<input className="btn my-4" type="submit" />
