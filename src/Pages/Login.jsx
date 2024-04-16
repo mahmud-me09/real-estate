@@ -40,7 +40,7 @@ const Login = () => {
 				e.target.email.value = "";
 				e.target.password.value = "";
 				toast.success("Logged in Successfully");
-				navigate('/')
+				navigate('/profile')
 			})
 			.catch((error) => {
 				const errorCode = error.code;
@@ -68,7 +68,7 @@ const Login = () => {
 			.then((result) => {
 				const user = result.user;
 				setUser(user);
-				navigate("/");
+				navigate("/profile");
 				console.log(user);
 			})
 			.catch((error) => console.log(error.message));

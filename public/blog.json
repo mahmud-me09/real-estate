@@ -1,0 +1,29 @@
+[
+	{
+		"id": 1,
+		"title": "The Future of Real Estate: Trends to Watch",
+		"author": "Jane Doe",
+		"date": "2024-04-01",
+		"content": "As we look to the future, several key trends are emerging in the real estate market that could significantly impact both buyers and sellers...",
+		"tags": ["Real Estate", "Market Trends", "Future"],
+		"image": "https://i.ibb.co/yRKx6xb/008.jpg"
+	},
+	{
+		"id": 2,
+		"title": "How to Choose the Right Property for Investment",
+		"author": "John Smith",
+		"date": "2024-03-28",
+		"content": "Investing in real estate is a major financial decision. Here are some tips to help you choose the right property that is likely to appreciate over time...",
+		"tags": ["Investment", "Real Estate", "Tips"],
+		"image": "https://i.ibb.co/GHrTL88/007.jpg"
+	},
+	{
+		"id": 3,
+		"title": "Decorating Your Home: Top Trends of 2024",
+		"author": "Alice Johnson",
+		"date": "2024-04-10",
+		"content": "Decorating your home is an exciting part of home ownership. Here are the top trends of 2024 that can help you make your space cozy and stylish...",
+		"tags": ["Home Decor", "Trends", "Interior"],
+		"image": "https://i.ibb.co/pxSwkjs/005.jpg"
+	}
+]

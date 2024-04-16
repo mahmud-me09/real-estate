@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 import { useLoaderData, useParams } from "react-router-dom";
 
+
 const DetailPage = () => {
 	const estates = useLoaderData();
 	const { id } = useParams();
@@ -11,6 +12,9 @@ const DetailPage = () => {
 	console.log(properties, id);
 	const estate = properties.find((estate) => estate.id === id);
 	console.log(estate);
+
+	
+
 	return (
 		<div>
 			<Helmet>

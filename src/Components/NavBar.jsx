@@ -18,6 +18,18 @@ const NavBar = () => {
 					Home
 				</NavLink>
 			</li>
+
+			<li className="font-bold">
+				<NavLink
+					to="/blogs"
+					className={({ isActive }) =>
+						isActive ? "bg-purple-500 text-white" : ""
+					}
+				>
+					Blogs
+				</NavLink>
+			</li>
+
 			<li className="font-bold">
 				<NavLink
 					to="/update"
@@ -28,16 +40,18 @@ const NavBar = () => {
 					Update Profile
 				</NavLink>
 			</li>
-			{user && <li className="font-bold">
-				<NavLink
-					to="/profile"
-					className={({ isActive }) =>
-						isActive ? "bg-purple-500 text-white" : ""
-					}
-				>
-					User Profile
-				</NavLink>
-			</li>}
+			{user && (
+				<li className="font-bold">
+					<NavLink
+						to="/profile"
+						className={({ isActive }) =>
+							isActive ? "bg-purple-500 text-white" : ""
+						}
+					>
+						User Profile
+					</NavLink>
+				</li>
+			)}
 		</>
 	);
 	return (

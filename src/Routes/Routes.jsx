@@ -8,6 +8,7 @@ import DetailPage from "../Pages/DetailPage";
 import UpdatePage from "../Pages/UpdatePage";
 import ProfilePage from "../Pages/ProfilePage";
 import PrivateRoutes from "./PrivateRoutes";
+import BlogPage from "../Pages/BlogPage";
 
 const Routes = () => {
     const router = createBrowserRouter([
@@ -43,6 +44,14 @@ const Routes = () => {
 					element: (
 						<PrivateRoutes>
 							<ProfilePage></ProfilePage>
+						</PrivateRoutes>
+					),
+				},
+				{
+					path: "/blogs",
+					element: (
+						<PrivateRoutes>
+							<BlogPage></BlogPage>
 						</PrivateRoutes>
 					),
 				},
