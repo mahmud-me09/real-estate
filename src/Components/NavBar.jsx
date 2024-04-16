@@ -84,7 +84,7 @@ const NavBar = () => {
 						<div
 							tabIndex={0}
 							role="button"
-							className="btn btn-ghost btn-circle avatar tooltip tooltip-bottom z-30"
+							className="btn btn-ghost btn-circle avatar tooltip tooltip-left z-30"
 							data-tip={`${user.displayName}`}
 						>
 							<div className="w-10 rounded-full">
