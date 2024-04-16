@@ -57,7 +57,7 @@ const Login = () => {
 				const user = result.user;
 				setUser(user);
 				console.log(user.displayName);
-				navigate('/')
+				navigate('/profile')
 			})
 			.catch((error) => console.log(error.message));
 	};
