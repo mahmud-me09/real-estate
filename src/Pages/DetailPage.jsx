@@ -49,7 +49,7 @@ const DetailPage = () => {
 						<p className="py-2">
 							Segment Name: {estate.segment_name}
 						</p>
-						<p className="py-6 text-lg lg:text-xl">
+						<p className="py-6 text-lg lg:text-xl text-justify">
 							Description: {estate.description}. This Property is
 							available for <strong>{estate.status}</strong> with
 							very much affordable price of{" "}
@@ -78,7 +78,7 @@ const DetailPage = () => {
 							<MapContainer
 								center={estate.coordinates}
 								zoom={13}
-								style={{ height: "250px", width: "50%" }}
+								style={{ height: "400px", width: "100%" }}
 							>
 								<TileLayer
 									url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
