@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet-async";
 
 import { useLoaderData, useParams } from "react-router-dom";
 
-import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 const DetailPage = () => {

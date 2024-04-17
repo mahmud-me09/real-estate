@@ -2,18 +2,19 @@ import {
 	createUserWithEmailAndPassword,
 	onAuthStateChanged,
 	signInWithEmailAndPassword,
-    signOut,
+	signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../Utils/firebase.config";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
-    // const navigate = useNavigate();
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState(() => {
+		const savedUser = localStorage.getItem("authUser");
+		return savedUser ? JSON.parse(savedUser) : null;
+	});
 
 	const createUser = (email, password) =>
 		createUserWithEmailAndPassword(auth, email, password);
@@ -23,20 +24,30 @@ const AuthProvider = ({ children }) => {
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			setUser(currentUser);
-			console.log("oberving", currentUser);
+			if (currentUser) {
+				localStorage.setItem("authUser", JSON.stringify(currentUser));
+				setUser(currentUser);
+			} else {
+				localStorage.removeItem("authUser");
+				setUser(null);
+			}
+			console.log("observing", currentUser);
 		});
 		return () => unsubscribe();
 	}, []);
 
-    const handleSignOut = () => {
+	const handleSignOut = () => {
 		signOut(auth)
-			.then((result) => {
-                toast.success("successfully Logged Out")
+			.then(() => {
+				toast.success("Successfully logged out");
+				localStorage.removeItem("authUser");
 				setUser(null);
-                // navigate('/')
+				
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				console.error(error);
+				toast.error("Failed to log out");
+			});
 	};
 
 	const authInfo = { user, createUser, signInUser, handleSignOut };

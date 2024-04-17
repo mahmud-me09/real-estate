@@ -107,7 +107,7 @@ const UpdatePage = () => {
 						<div className="space-y-2">
 							<label htmlFor="email" className="block text-sm">
 								Email address
-								{user?.email && (
+								{user?.providerData[0]?.email && (
 									<span className="text-red-500">
 										{" "}
 										(not changeable)
@@ -115,10 +115,10 @@ const UpdatePage = () => {
 								)}
 							</label>
 							<input
-								readOnly={user?.email && true}
+								readOnly={user?.providerData[0]?.email && true}
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
 								type="text"
-								defaultValue={user?.email}
+								defaultValue={user?.providerData[0]?.email}
 								{...register("email", {
 									required: "Email Address is required",
 									pattern: {

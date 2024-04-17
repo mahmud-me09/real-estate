@@ -12,6 +12,8 @@ import BlogPage from "../Pages/BlogPage";
 import Error from "../Pages/Error";
 import PublicRoutes from "./PublicRoute";
 
+import ScrollToTop from "react-scroll-to-top";
+
 const Routes = () => {
     const router = createBrowserRouter([
 		{
@@ -25,17 +27,26 @@ const Routes = () => {
 				},
 				{
 					path: "/login",
-					element: <PublicRoutes><Login></Login></PublicRoutes>,
+					element: (
+						<PublicRoutes>
+							<Login></Login>
+						</PublicRoutes>
+					),
 				},
 				{
 					path: "/register",
-					element: <PublicRoutes><Register></Register></PublicRoutes>,
+					element: (
+						<PublicRoutes>
+							<Register></Register>
+						</PublicRoutes>
+					),
 				},
 				{
 					path: ":id",
 					loader: () => fetch("./data.json"),
 					element: (
 						<PrivateRoutes>
+							<ScrollToTop smooth />
 							<DetailPage></DetailPage>
 						</PrivateRoutes>
 					),

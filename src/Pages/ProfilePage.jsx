@@ -33,7 +33,7 @@ const ProfilePage = () => {
 							. We will do our best to ensure that your dream will
 							come to reality. You can choose from our
 							collections. We will be in touch in your provided
-							email: <strong>{user.email}</strong>
+							email: <strong>{user?.providerData[0]?.email}</strong>
 						</p>
 						<Link to="/" className="btn btn-primary "
 							>

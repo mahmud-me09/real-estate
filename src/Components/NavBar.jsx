@@ -5,7 +5,6 @@ import { AuthContext } from "../Providers/AuthProvider";
 const NavBar = () => {
 	const { user, handleSignOut } = useContext(AuthContext);
 	const navigate = useNavigate();
-	console.log(user);
 	const navLink = (
 		<>
 			<li className="font-bold">
