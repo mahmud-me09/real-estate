@@ -6,6 +6,19 @@ import { useLoaderData, useParams } from "react-router-dom";
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+import iconMarker from "leaflet/dist/images/marker-icon.png";
+import iconRetina from "leaflet/dist/images/marker-icon-2x.png";
+import iconShadow from "leaflet/dist/images/marker-shadow.png";
+
+const icon = L.icon({
+	iconRetinaUrl: iconRetina,
+	iconUrl: iconMarker,
+	shadowUrl: iconShadow,
+});
 
 const DetailPage = () => {
 	const estates = useLoaderData();
@@ -68,7 +81,7 @@ const DetailPage = () => {
 									url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 								/>
-								<Marker position={estate.coordinates}>
+								<Marker position={estate.coordinates} icon={icon}>
 									<Popup>{estate.location}</Popup>
 								</Marker>
 							</MapContainer>
