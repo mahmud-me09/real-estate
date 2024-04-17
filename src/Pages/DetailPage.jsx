@@ -18,6 +18,9 @@ const icon = L.icon({
 	iconRetinaUrl: iconRetina,
 	iconUrl: iconMarker,
 	shadowUrl: iconShadow,
+	iconSize: [22, 32],
+	iconAnchor: [16, 32],
+	popupAnchor: [0, -32],
 });
 
 const DetailPage = () => {
