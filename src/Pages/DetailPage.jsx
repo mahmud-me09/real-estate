@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet-async";
 
 import { useLoaderData, useParams } from "react-router-dom";
 
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
 const DetailPage = () => {
 	const estates = useLoaderData();
@@ -11,9 +13,6 @@ const DetailPage = () => {
 	const { properties } = estates;
 	console.log(properties, id);
 	const estate = properties.find((estate) => estate.id === id);
-	console.log(estate);
-
-	
 
 	return (
 		<div>
@@ -28,7 +27,7 @@ const DetailPage = () => {
 						className="max-w-sm rounded-lg shadow-2xl"
 					/>
 					<div>
-						<h1 className="text-xl lg:text-5xl font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
+						<h1 className="text-xl lg:text-5xl py-4 font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">
 							{estate.estate_title}
 						</h1>
 						<p className="py-2">
@@ -38,8 +37,8 @@ const DetailPage = () => {
 							Description: {estate.description}. This Property is
 							available for <strong>{estate.status}</strong> with
 							very much affordable price of{" "}
-							<strong>${estate.price}</strong>. This property is
-							 a very attractive place at{" "}
+							<strong>${estate.price}</strong>. This property is a
+							very attractive place at{" "}
 							<strong>{estate.location}</strong>. Total area of
 							this property is{" "}
 							<strong>{estate.area_sq_ft} square feet</strong>.
@@ -56,6 +55,24 @@ const DetailPage = () => {
 								<li key={idx}>{facility}</li>
 							))}
 						</ul>
+						<div>
+							<p className="py-6 text-lg">
+								The Location is right here:
+							</p>
+							<MapContainer
+								center={estate.coordinates}
+								zoom={13}
+								style={{ height: "250px", width: "50%" }}
+							>
+								<TileLayer
+									url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+									attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+								/>
+								<Marker position={estate.coordinates}>
+									<Popup>{estate.location}</Popup>
+								</Marker>
+							</MapContainer>
+						</div>
 					</div>
 				</div>
 			</div>

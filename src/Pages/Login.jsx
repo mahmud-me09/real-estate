@@ -16,7 +16,9 @@ import { AuthContext } from "../Providers/AuthProvider";
 const Login = () => {
 	const navigate = useNavigate();
 	const googleProvider = new GoogleAuthProvider();
+	googleProvider.addScope("email");
 	const githubProvider = new GithubAuthProvider();
+	githubProvider.addScope("user:email");
 	const [showPassword, setShowPassword] = useState(false);
 	const [user, setUser] = useState(null);
 
@@ -36,7 +38,6 @@ const Login = () => {
 				// Signed up
 				const user = userCredential.user;
 				setUser(user);
-				console.log(user);
 				e.target.email.value = "";
 				e.target.password.value = "";
 				toast.success("Logged in Successfully");
@@ -45,18 +46,16 @@ const Login = () => {
 			.catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				console.log(errorCode, errorMessage);
 				toast.error("email or password do not match");
 			});
 	};
 
 	const handleGoogleLogin = () => {
-		console.log("clicked");
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
 				const user = result.user;
 				setUser(user);
-				console.log(user.displayName);
+				
 				navigate('/profile')
 			})
 			.catch((error) => console.log(error.message));

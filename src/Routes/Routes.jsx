@@ -9,6 +9,8 @@ import UpdatePage from "../Pages/UpdatePage";
 import ProfilePage from "../Pages/ProfilePage";
 import PrivateRoutes from "./PrivateRoutes";
 import BlogPage from "../Pages/BlogPage";
+import Error from "../Pages/Error";
+import PublicRoutes from "./PublicRoute";
 
 const Routes = () => {
     const router = createBrowserRouter([
@@ -23,11 +25,11 @@ const Routes = () => {
 				},
 				{
 					path: "/login",
-					element: <Login></Login>,
+					element: <PublicRoutes><Login></Login></PublicRoutes>,
 				},
 				{
 					path: "/register",
-					element: <Register></Register>,
+					element: <PublicRoutes><Register></Register></PublicRoutes>,
 				},
 				{
 					path: ":id",

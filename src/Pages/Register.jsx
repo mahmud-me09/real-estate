@@ -9,7 +9,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
 	const navigate = useNavigate();
-	const [user, setUser] = useState([]);
 	
 	const {createUser} = useContext(AuthContext)
 
@@ -22,10 +21,7 @@ const Register = () => {
 	const onSubmit = (data) => {
 		createUser(data.email, data.password)
 			.then((userCredential) => {
-				// Signed in
 				const newUser = userCredential.user;
-				setUser(newUser); // Set user state
-				toast.success("User Created Successfully");
 
 				return updateProfile(newUser, {
 					displayName: data.Name,
@@ -33,20 +29,14 @@ const Register = () => {
 				});
 			})
 			.then(() => {
-				toast.success("Profile Updated Successfully");
+				toast.success("User Created Successfully");
 				setTimeout(()=>navigate("/"),2000) ;
 				reset()
 			})
 			.catch((error) => {
 				toast.error(`User creation failed: ${error.message}`);
-				console.error(
-					"Error during user creation or profile update:",
-					error
-				);
 			});
 	};
-
-	console.log(user);
 
 	return (
 		<>

@@ -11,7 +11,7 @@ const UpdatePage = () => {
 	const navigate = useNavigate();
 
 	const { user } = useContext(AuthContext);
-
+	console.log(user?.email ? true:false)
 	const {
 		register,
 		handleSubmit,
@@ -20,10 +20,10 @@ const UpdatePage = () => {
 	} = useForm();
 	const onSubmit = (data) => {
 		updateProfile(user, {
-					displayName: data.Name,
-					photoURL: data.photoURL,
-					email: data.email,
-				})
+			displayName: data.Name,
+			photoURL: data.photoURL,
+			email: data.email,
+		})
 			.then(() => {
 				toast.success("Profile Updated Successfully");
 				setTimeout(() => navigate("/"), 2000);
@@ -107,13 +107,15 @@ const UpdatePage = () => {
 						<div className="space-y-2">
 							<label htmlFor="email" className="block text-sm">
 								Email address
-								<span className="text-red-500">
-									{" "}
-									(not changeable)
-								</span>
+								{user?.email && (
+									<span className="text-red-500">
+										{" "}
+										(not changeable)
+									</span>
+								)}
 							</label>
 							<input
-								readOnly
+								readOnly={user?.email && true}
 								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
 								type="text"
 								defaultValue={user?.email}
