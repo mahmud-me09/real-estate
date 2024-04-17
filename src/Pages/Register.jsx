@@ -6,9 +6,12 @@ import { useContext, useState } from "react";
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
 	const navigate = useNavigate();
+	const [showPassword, setShowPassword] = useState(false);
 	
 	const {createUser} = useContext(AuthContext)
 
@@ -36,6 +39,9 @@ const Register = () => {
 			.catch((error) => {
 				toast.error(`User creation failed: ${error.message}`);
 			});
+	};
+	const handleShowPassword = () => {
+		setShowPassword(!showPassword);
 	};
 
 	return (
@@ -120,13 +126,13 @@ const Register = () => {
 								</p>
 							)}
 						</div>
-						<div className="space-y-2">
+						<div className="space-y-2 relative">
 							<label htmlFor="password" className="text-sm">
 								Password<span className="text-red-500">*</span>
 							</label>
 							<input
-								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600"
-								type="password"
+								className="w-full px-3 py-2 border rounded-md dark:border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-600 "
+								type={showPassword ? "text" : "password"}
 								placeholder="Password"
 								{...register("password", {
 									required: true,
@@ -142,6 +148,12 @@ const Register = () => {
 									},
 								})}
 							/>
+							<div
+								onClick={handleShowPassword}
+								className="absolute bottom-3 right-4"
+							>
+								{showPassword ? <FaEye /> : <FaEyeSlash />}
+							</div>
 							{errors.password && (
 								<p role="alert" className="text-red-600">
 									{errors.password.message}
@@ -151,7 +163,12 @@ const Register = () => {
 					</div>
 					<input className="btn my-4" type="submit" />
 				</form>
-				<p className="text-center">Already have an account Please <Link className="underline text-blue-600" to ="/login">Sign in</Link></p>
+				<p className="text-center">
+					Already have an account Please{" "}
+					<Link className="underline text-blue-600" to="/login">
+						Sign in
+					</Link>
+				</p>
 			</div>
 		</>
 	);
